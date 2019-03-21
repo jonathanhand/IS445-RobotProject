@@ -7,5 +7,5 @@ import { goGoal } from './src/robots/goal.js'
 const start = initStates()
 // runRobot(goRandom, start)
 
-runRobot(goRoute, start)
-// runRobot(goGoal, start)
+// runRobot(goRoute, start)
+runRobot(goGoal, start)

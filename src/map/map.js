@@ -11,8 +11,8 @@ function addEdge(map, from, to) {
 function buildGraph(paths) {
   const map = Object.create(null)
 
-  const paths = paths.map(r => r.split('-'))
-  for (let [from, to] of paths) {
+  const ends = paths.map(r => r.split('-'))
+  for (let [from, to] of ends) {
     addEdge(map, from, to)
     addEdge(map, to, from)
   }
@@ -21,3 +21,5 @@ function buildGraph(paths) {
 }
 
 export const map = buildGraph(paths)
+
+export const START_PLACE = 'Post Office'

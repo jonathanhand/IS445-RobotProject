@@ -11,21 +11,21 @@ export class VillageState {
   // else, create a state with a new place and to-be-delivered parcels
   move(destination) {
     if (map[this.place].includes(destination)) {
-      // now arrive destination,
-      const undeliveredParcels = deliverParces(destination)
+      // now arrive at destination,
+      const parcels = this.parcels.map(parcel => {
+        if (parcel.from === this.place) {
+          // pick the parcel and set its from to the destination
+          console.log(`pick ${parcel.from} ${parcel.to}`)
+          return { from: destination, to: parcel.to }
+        } else {
+          return parcel // not picked
+        }
+      })
+      const undeliveredParcels = parcels.filter(p => p.from !== p.to)
       return new VillageState(destination, undeliveredParcels)
     } else {
-      // ooops, no way to go, return current state
+      // no way to go, return current state
       return this
     }
-  }
-
-  deliverParces(destination) {
-    // drop a parcel when its address is the destination
-    let undeliveredParcels = this.parcels.filter(p => {
-      p.address !== p.destination
-    })
-
-    return undeliveredParcels
   }
 }

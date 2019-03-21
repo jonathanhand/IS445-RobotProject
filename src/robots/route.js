@@ -14,9 +14,16 @@ const mailRoute = [
   'Post Office',
 ]
 
-export function routeRobot(state, memory) {
-  if (memory.length == 0) {
-    memory = mailRoute
+// copy the mail route
+let routes = mailRoute
+
+export function goRoute(state) {
+  const place = routes[0]
+  routes = routes.slice(1)
+
+  // restart if not finish in one loop
+  if (routes.length === 0) {
+    routes = mailRoute
   }
-  return { direction: memory[0], memory: memory.slice(1) }
+  return place
 }

@@ -24,6 +24,8 @@ export class VillageState {
       const undeliveredParcels = parcels.filter(p => p.from !== p.to)
       return new VillageState(destination, undeliveredParcels)
     } else {
+      console.log('undeliverable!')
+
       // no way to go, return current state
       return this
     }

@@ -28,6 +28,6 @@ export class VillageState {
 
       // no way to go, return current state
       return this
-    }
+    } 
   }
 }
